@@ -4,12 +4,13 @@ public class Main {
     Tree l3 = new Tree(3);
     Tree l5 = new Tree(5);
     Tree l7 = new Tree(7);
+    Tree l14 = new Tree(14);
     
     Tree t2 = new Tree(2, new Tree[]{l1, l3});
     Tree t6 = new Tree(6, new Tree[]{l7});
     
     Tree t4 = new Tree(4, new Tree[]{t2, l5, t6});
-    Tree t12 = new Tree(12, new Tree[]{t2, l5, t6});
+    Tree t12 = new Tree(12, new Tree[]{t2, l14, t6});
 
     System.out.println(Trees.nbrLeaves(t4));
     
@@ -46,5 +47,17 @@ public class Main {
 
     System.out.println("Depth");
     System.out.println(Trees.depth(l1));
+
+    System.out.println("SameOne true");
+    System.out.println(Trees.sameOne(t4, l5));
+
+    System.out.println("SameOne false");
+    System.out.println(Trees.sameOne(t4, l14));
+
+    System.out.println("DFS");
+    Trees.dfsPrint(t4);
+
+    System.out.println("BFS");
+    Trees.bfsPrint(t4);
   }
 }

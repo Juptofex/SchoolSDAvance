@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Trees {
 
 	// *******************************************************
@@ -124,15 +127,40 @@ public class Trees {
 
 	// 1.6)
 	public static boolean sameOne(Tree n1, Tree n2) {
-		return true;
+		if (n1.getParent() != null)
+			return sameOne(n1.getParent(), n2);
+		if (n2.getParent() != null)
+			return sameOne(n1, n2.getParent());
+		return n1==n2;
 	}
 
 	// 1.7)
 	public static void dfsPrint(Tree t) {
+		System.out.println(t.getValue());
+		for (Tree child : t.getChildren()) {
+			dfsPrint(child);
+		}
 	}
 
 	// 1.8)
 	public static void bfsPrint(Tree t) {
+		ArrayList<Tree> currentLevel = new ArrayList<>();
+		currentLevel.add(t);
+		bfsPrintLevel(currentLevel);
+	}
+
+	private static void bfsPrintLevel(ArrayList<Tree> currentLevel) {
+		if (currentLevel.isEmpty()) {
+			return;
+		}
+		ArrayList<Tree> nextLevel = new ArrayList<>();
+		for (Tree node : currentLevel) {
+			System.out.println(node.getValue());
+      Collections.addAll(nextLevel, node.getChildren());
+		}
+
+		// Process next level recursively
+		bfsPrintLevel(nextLevel);
 	}
 
 	// *******************************************************
