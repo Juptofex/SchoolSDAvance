@@ -10,7 +10,7 @@ public class Main {
     Tree t6 = new Tree(6, new Tree[]{l7});
     
     Tree t4 = new Tree(4, new Tree[]{t2, l5, t6});
-    Tree t12 = new Tree(12, new Tree[]{t2, l14, t6});
+    Tree t12 = new Tree(12, new Tree[]{ l14, t6});
 
     System.out.println(Trees.nbrLeaves(t4));
     
@@ -59,5 +59,8 @@ public class Main {
 
     System.out.println("BFS");
     Trees.bfsPrint(t4);
+
+    System.out.println("Print path");
+    Trees.printPathV1(l1);
   }
 }

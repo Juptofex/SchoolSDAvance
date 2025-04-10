@@ -158,8 +158,6 @@ public class Trees {
 			System.out.println(node.getValue());
       Collections.addAll(nextLevel, node.getChildren());
 		}
-
-		// Process next level recursively
 		bfsPrintLevel(nextLevel);
 	}
 
@@ -169,6 +167,10 @@ public class Trees {
 
 	// 2.1)
 	static void printPathV1(Tree node) {
+		if (node.getParent() != null) {
+			printPathV1(node.getParent());
+		}
+		System.out.println(node.getValue());
 	}
 
 	// 2.2)
