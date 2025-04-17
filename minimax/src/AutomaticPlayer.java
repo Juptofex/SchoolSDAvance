@@ -11,7 +11,8 @@ public class AutomaticPlayer extends SimpleSpectator implements Player {
   @Override
   public void start(State state) {
     // TODO
-
+    this.currentNode = new Tree(state);
+    currentNode.computeMinimaxValues();
   }
 
   // En plus du contrat de Spectator, cette méthode maintient currentNode,
@@ -19,6 +20,12 @@ public class AutomaticPlayer extends SimpleSpectator implements Player {
   @Override
   public void play(boolean isLeftMove, State state) {
     // TODO
+    if (isLeftMove) {
+      currentNode = currentNode.getLeftChild();
+      state.playLeft();
+    }
+    currentNode = currentNode.getRightChild();
+    state.playRight();
   }
 
   // Cette méthode est appelée pour connaitre le coup de ce joueur :
@@ -27,6 +34,6 @@ public class AutomaticPlayer extends SimpleSpectator implements Player {
   @Override
   public boolean nextPlay() {
     // TODO
-    return true;
+    return currentNode.getMinimaxValue().isLeftMove();
   }
 }
