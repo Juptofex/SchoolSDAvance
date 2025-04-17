@@ -11,6 +11,7 @@ public class AutomaticPlayer extends SimpleSpectator implements Player {
   @Override
   public void start(State state) {
     // TODO
+    super.start(state);
     this.currentNode = new Tree(state);
     currentNode.computeMinimaxValues();
   }
@@ -20,12 +21,12 @@ public class AutomaticPlayer extends SimpleSpectator implements Player {
   @Override
   public void play(boolean isLeftMove, State state) {
     // TODO
+    super.play(isLeftMove, state);
     if (isLeftMove) {
       currentNode = currentNode.getLeftChild();
-      state.playLeft();
+    } else {
+      currentNode = currentNode.getRightChild();
     }
-    currentNode = currentNode.getRightChild();
-    state.playRight();
   }
 
   // Cette méthode est appelée pour connaitre le coup de ce joueur :
