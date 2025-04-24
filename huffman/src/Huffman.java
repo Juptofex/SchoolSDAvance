@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -25,7 +26,11 @@ public class Huffman {
 	// caractère donnée en paramètre et comme valeur la fréquence de 
 	// ces lettres 
 	public static Map<Character, Integer> computeFreq(String s) {
-		return null;
+		Map<Character, Integer> freq = new HashMap<>();
+		for (char c : s.toCharArray()) {
+			freq.put(c, freq.getOrDefault(c, 0) + 1);
+		}
+		return freq;
 	}	
 	
 	// renvoie l'arbre de Huffman obtenu à partir de la map des fréquences des lettres 
